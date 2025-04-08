@@ -1,0 +1,37 @@
+Microsoft Windows [Version 10.0.26100.3476]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\navin>psql --version
+psql (PostgreSQL) 17.4
+
+C:\Users\navin>psql -U postgres
+Password for user postgres:
+
+psql (17.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# CREATE DATABASE my_first_db;
+CREATE DATABASE
+postgres=# DROP DATABASE my_first_db;
+DROP DATABASE
+postgres=# CREATE DATABASE my_first_db;
+CREATE DATABASE
+postgres=# CREATE TABLE employees (
+postgres(#     id SERIAL PRIMARY KEY,
+postgres(#     name TEXT NOT NULL,
+postgres(#     age INTEGER,
+postgres(#     joining_date DATE DEFAULT CURRENT_DATE,
+postgres(#     is_active BOOLEAN DEFAULT TRUE
+postgres(# );
+CREATE TABLE
+postgres=# CREATE SCHEMA company;
+CREATE SCHEMA
+postgres=# CREATE TABLE company.departments (
+postgres(#     dept_id SERIAL PRIMARY KEY,
+postgres(#     dept_name TEXT NOT NULL
+postgres(# );
+CREATE TABLE
+postgres=#
