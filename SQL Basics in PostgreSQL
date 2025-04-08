@@ -1,0 +1,122 @@
+
+
+SQL Basics in PostgreSQL: Easy Examples of GROUP BY, CASE & NULL Handling
+
+SQL Basics in PostgreSQL:
+Whether you're diving into data analysis or starting a journey in backend development, PostgreSQL is a powerful relational database system that you’ll likely encounter. In this guide, we’ll explore essential SQL basics — from aliases to aggregates and CASE expressions — using clear examples, sample outputs, and easy language.
+
+📌 1. PostgreSQL Aliases (AS)
+Aliases let you rename columns or tables for better readability.
+
+✅ SQL Example
+SELECT name AS First_name, salary AS monthly_salary
+FROM company.employees;
+
+SQL Basics in PostgreSQL
+👉 Use aliases to make your column headers cleaner and more descriptive.
+
+📌 2. PostgreSQL DISTINCT Keyword
+Use DISTINCT to remove duplicate values from the results.
+
+✅ SQL Example
+SELECT DISTINCT department
+FROM company.employees;
+
+🖼 Output:
+SQL Basics in PostgreSQL
+💡 Great for filtering out repeats and finding unique entries.
+
+📌 3. PostgreSQL Logical Operators (AND, OR, NOT)
+These are used to combine multiple conditions in your SQL queries.
+
+✅ SQL Example (AND, OR)
+SELECT *
+FROM company.employees
+WHERE department = 'IT' AND salary > 5000;
+SELECT *
+FROM company.employees
+WHERE department = 'HR' OR department = 'Finance';
+SELECT *
+FROM company.employees
+WHERE NOT department = 'HR';
+🧠 Use AND when both conditions must be true, OR when at least one must be true, and NOT to negate a condition.
+
+📌 4. BETWEEN, IN, LIKE, IS NULL
+These are helpful for pattern matching and range filtering.
+
+✅ SQL Examples
+-- BETWEEN: Range of values
+SELECT * FROM company.employees
+WHERE salary BETWEEN 4000 AND 6000;
+-- IN: Matches one of the values
+SELECT * FROM company.employees
+WHERE department IN ('IT', 'Finance');
+-- LIKE: Pattern matching
+SELECT * FROM company.employees
+WHERE first_name LIKE 'A%';  -- Starts with A
+-- IS NULL: Check for NULL
+SELECT * FROM company.employees
+WHERE manager_id IS NULL;
+🔍 Perfect tools to match partial data, check ranges, or find missing values.
+
+📌 5. PostgreSQL Aggregate Functions
+These are used to perform calculations on a set of rows.
+
+COUNT(): Total number of rows
+SUM(): Total of numeric column
+AVG(): Average value
+MIN() / MAX(): Smallest / largest values
+✅ SQL Example
+SELECT COUNT(*) AS total_employees,
+       SUM(salary) AS total_salary,
+       AVG(salary) AS avg_salary,
+       MIN(salary) AS min_salary,
+       MAX(salary) AS max_salary
+FROM company.employees;
+🖼 Output
+SQL Basics in PostgreSQL
+📊 Use these to gain quick insights into your data.
+
+📌 6. GROUP BY and HAVING
+GROUP BY groups rows by a column. HAVING filters those groups.
+
+✅ SQL Example
+SELECT department, COUNT(*) AS emp_count
+FROM company.employees
+GROUP BY department
+HAVING COUNT(*) > 2;
+🖼 Output
+
+🧮 Use HAVING when you want to filter after grouping (unlike WHERE, which filters rows before grouping).
+
+📌 7. CASE Expressions
+CASE adds conditional logic into your queries.
+
+✅ SQL Example
+SELECT name,
+       salary,
+       CASE
+           WHEN salary > 6000 THEN 'High'
+           WHEN salary BETWEEN 4000 AND 6000 THEN 'Medium'
+           ELSE 'Low'
+       END AS salary_range
+FROM company.employees;
+🖼 Output
+
+🧠 Think of CASE like a simple if-else for SQL.
+
+📌 8. Working with NULL Values
+NULL means missing or undefined data. You can handle it using:
+
+IS NULL / IS NOT NULL
+COALESCE(): Replace NULLs with default values
+✅ SQL Example
+SELECT name,
+       COALESCE(CAST(manager_id AS VARCHAR(50)), 'No Manager') AS manager_status
+FROM company.employees;
+🖼 Output
+
+💡 Always watch out for NULLs when filtering, joining, or aggregating data.
+
+🔚 Wrapping Up
+This guide walked you through the essential PostgreSQL SQL basics — concepts that you'll use daily in real-world database work. From simple queries to smart grouping and handling missing data, you've now got the tools to write powerful and clean SQL code.
