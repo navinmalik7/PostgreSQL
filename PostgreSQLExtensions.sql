@@ -2,6 +2,20 @@
 SELECT * FROM pg_available_extensions;
 
 
+
+CREATE TABLE cities (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    location GEOGRAPHY(POINT, 4326)
+);
+
+-- Insert sample cities (New York, Los Angeles, London)
+INSERT INTO cities (name, location) VALUES
+    ('New York', ST_GeogFromText('POINT(-74.0060 40.7128)')),
+    ('Los Angeles', ST_GeogFromText('POINT(-118.2437 34.0522)')),
+    ('London', ST_GeogFromText('POINT(-0.1276 51.5074)'));
+
+
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 SELECT * FROM pg_extension;
